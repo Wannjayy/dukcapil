@@ -50,11 +50,11 @@
                             <form id="login-form" action="proses_login.php" method="post">
                                 <div class="form-element">
                                     <label for="email">Email</label>
-                                    <input type="text" id="email" placeholder="Masukkan Email">
+                                    <input type="text" id="email" name="email" placeholder="Masukkan Email">
                                 </div>
                                 <div class="form-element">
                                     <label for="password">Password</label>
-                                    <input type="password" id="password" placeholder="Masukkan Password">
+                                    <input type="password" id="password" name="password" placeholder="Masukkan Password">
                                 </div>
                                 <div class="form-element">
                                     <label for="remember-me"><input type="checkbox" id="remember-me">Ingat Saya</label>
@@ -80,19 +80,19 @@
                             <form id="signup-form" action="proses_signup.php" method="post">
                                 <div class="form-element">
                                     <label for="nik">NIK</label>
-                                    <input type="text" id="nik" placeholder="Masukkan NIK">
+                                    <input type="text" id="nik" name="nik" placeholder="Masukkan NIK">
                                 </div>
                                 <div class="form-element">
                                     <label for="nama">Nama Lengkap</label>
-                                    <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+                                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Lengkap">
                                 </div>
                                 <div class="form-element">
                                     <label for="signup-email">Email</label>
-                                    <input type="text" id="signup-email" placeholder="Masukkan Email">
+                                    <input type="text" id="signup-email" name="signup-email" placeholder="Masukkan Email">
                                 </div>
                                 <div class="form-element">
                                     <label for="signup-password">Kata Sandi</label>
-                                    <input type="password" id="signup-password" placeholder="Masukkan Kata Sandi">
+                                    <input type="password" id="signup-password" name="signup-password" placeholder="Masukkan Kata Sandi">
                                 </div>
                                 <div class="form-element">
                                     <label for="TnC"><input type="checkbox" id="TnC">Saya telah membaca, memahami, dan <br> menyetujui Syarat dan Ketentuan <br> Penggunaan Layanan Dukcapil Online</label>
