@@ -16,23 +16,39 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Query untuk memeriksa keberadaan pengguna di database
-$query = "SELECT * FROM Users WHERE email='$email'";
-$result = $conn->query($query);
+$query = "SELECT * FROM Users WHERE email=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Pengguna ditemukan, ambil hashedPassword dari database
+    // Pengguna ditemukan, ambil hashedPassword dan NIK dari database
     $row = $result->fetch_assoc();
     $hashedPasswordFromDatabase = $row['password'];
+    $nik = $row['nik'];
+    $nama = $row['nama'];
 
     // Verifikasi password
     if (password_verify($password, $hashedPasswordFromDatabase)) {
         // Password cocok, berikan akses
-        echo "Login berhasil!";
+        session_start();
+        $_SESSION['login_success'] = true; // Gunakan session untuk menyimpan status login
+        $_SESSION['nik'] = $nik; // Simpan NIK dalam session
+        $_SESSION['nama'] = $nama; 
+        header("Location: home.php?login=success");
+        exit();
     } else {
         // Password tidak cocok, berikan pesan kesalahan
-        echo "Login gagal. Cek kembali email dan password Anda.";
+        header("Location: index.php?login=failed");
+        exit();
     }
 } else {
     // Pengguna tidak ditemukan, berikan pesan kesalahan
-    echo "Login gagal. Cek kembali email dan password Anda.";
+    header("Location: index.php?login=failed");
+    exit();
 }
+
+// Tutup koneksi database
+$conn->close();
+?>

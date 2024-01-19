@@ -16,4 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".popup-signup .close-btn").addEventListener("click", function(){
         document.querySelector(".popup-signup").classList.remove("active");
     });
+
+    const params = new URLSearchParams(window.location.search);
+            const loginSuccess = params.get('login');
+            if (loginSuccess === 'success') {
+                // Tampilkan pop-up "Login berhasil" di sini
+                alert("Login berhasil!");
+            }   
 });

@@ -33,7 +33,7 @@ if ($emailCheckResult->num_rows > 0) {
 
     if ($conn->query($insertQuery) === TRUE) {
         // Pendaftaran berhasil
-        header("Location: home.php?signup=success");
+        header("Location: index.php?signup=success");
         exit();
     } else {
         // Terjadi kesalahan saat memasukkan data ke database
